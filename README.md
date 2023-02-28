@@ -33,5 +33,26 @@ th row, a-th column, the queen is present and so on. Each board is a list of eig
 Please make sure to update tests as appropriate.
 
 ## Methodology
+The main challenges we have is to represent the 8x8 board and we used two ways to represent it.
+One is Position indexed based in which each position will be represented as an integer from 0 to
+63. We use one integer to represent the position of a queen. Another method is Row indexed based
+in which each row of the board is indexed from 0 to 7. We place different queens on different row
+from top to bottom. The sequence [a b c d ...] means that in 0 th row, a th column, the queen is
+present and so one. We then have a evalFitness function which we pass to the DEAP algorithm
+which calculates the number of queen collisions. The lower the evalFitness score the better it is.
+We then initialize population, generations, mutation probabilities and cross over probabilities. We
+feed this information into DEAP algorithm using eaSimple() which will train the genetic
+algorithm.
 
 ## Results
+Position-indexed-based: we trained DEAP with population size 100 and 2500 for 100 generations.
+The best solution with population size 100 and 100 generations was [36,2,46,17,13,56,31,51]
+which have fitness score of 1 and is not an optimal solution. This solution never reached a fitness
+score of 0 which can be seen in the right graph.The solution with population size 2500 and for 100
+generation was [29,42,52,62,23,32,9,3] which have fitness score of 0 and is an optimal solution. 
+
+Row-indexed-based:
+We trained the model with population size of 2500 and generations of 100 which gave optimal
+solution of [5,2,0,6,4,7,1,3] with the fitness value of 0. And the chess representation of the solution
+is also below.
+
